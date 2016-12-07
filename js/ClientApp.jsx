@@ -1,12 +1,21 @@
 const React = require('react')
 const ReactDOM = require('react-dom')
 const Landing = require('./Landing')
-const { Router, Route, hashHistory } = require('react-router')
+const Search = require('./Search')
+const Layout = require('./Layout')
+const { Router, Route, IndexRoute, hashHistory } = require('react-router')
+const { store } = require('./Store')
+const { Provider } = require('react-redux')
 
 const App = () => (
-  <Router history={hashHistory}>
-    <Route path='/' component={Landing} />
-  </Router>
+  <Provider store={store}>
+    <Router history={hashHistory}>
+      <Route path='/' component={Layout}>
+        <IndexRoute component={Landing} />
+        <Route path='/search' component={Search} />
+      </Route>
+    </Router>
+  </Provider>
 )
 
 ReactDOM.render(<App />, document.getElementById('app'))
