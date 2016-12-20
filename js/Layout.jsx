@@ -2,7 +2,6 @@ const React = require('react')
 
 const Layout = (props) => (
   <div className="app-container">
-    <h1>My Branding</h1>
     {props.children}
   </div>
 )
